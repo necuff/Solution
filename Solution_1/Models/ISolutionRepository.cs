@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Solution_1.Models
 {
     public interface ISolutionRepository
     {
-        IEnumerable<Solution> Solutions { get; }        
+        IQueryable<Solution> Solutions { get; }        
 
         void AddSolution(Solution solution);
 

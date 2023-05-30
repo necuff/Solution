@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using System.Linq;
 
 namespace Solution_1.Models
 {
@@ -12,7 +11,7 @@ namespace Solution_1.Models
             _context = context;            
         }
         
-        public IEnumerable<Solution> Solutions => _context.Solutions;
+        public IQueryable<Solution> Solutions => _context.Solutions;
 
         public void AddSolution(Solution solution)
         {

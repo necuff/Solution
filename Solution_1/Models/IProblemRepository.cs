@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Solution_1.Models
 {
     public interface IProblemRepository
     {
-        IEnumerable<Problem> Problems { get; }
+        IQueryable<Problem> Problems { get; }
 
         Problem GetProblem(long id);
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 using Solution_1.Models;
 using Solution_1.Models.ViewModels;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Solution_1.Controllers
                 .OrderBy(p => p.Id)
                 .Skip((pageNum - 1) * _pageSize)
                 .Take(_pageSize)
-                .ToArray(),
+                .ToList(),                
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageNum,

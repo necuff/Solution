@@ -13,7 +13,7 @@ namespace Solution_1.Models
             _dataContext = dataContext;            
         }
 
-        public IEnumerable<Problem> Problems => 
+        public IQueryable<Problem> Problems =>
             _dataContext.Problems.Include(p => p.Solution);
 
         public void AddProblem(Problem problem)
@@ -21,9 +21,9 @@ namespace Solution_1.Models
             _dataContext.Problems.Add(problem);
             _dataContext.SaveChanges();
         }
-
+        
         public Problem GetProblem(long id) =>
-            _dataContext.Problems.Include(p => p.Solution).First(p => p.Id == id);
+            _dataContext.Problems.Include(p => p.Solution).First(p => p.Id == id);        
 
         public void UpdateProblem(Problem problem)
         {

@@ -20,7 +20,7 @@ namespace Solution_1.Controllers
                 .OrderBy(p => p.Id)
                 .Skip((pageNum - 1) * _pageSize)
                 .Take(_pageSize)
-                .ToArray(),
+                .ToList(),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageNum,
