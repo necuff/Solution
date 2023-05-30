@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Solution_1.Models
 {
@@ -6,7 +7,10 @@ namespace Solution_1.Models
     {
         private DataContext _context;
 
-        public SolutionRepository(DataContext context) => _context = context;
+        public SolutionRepository(DataContext context)
+        {
+            _context = context;            
+        }
         
         public IEnumerable<Solution> Solutions => _context.Solutions;
 

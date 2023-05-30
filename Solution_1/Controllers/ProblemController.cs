@@ -9,13 +9,15 @@ namespace Solution_1.Controllers
         private IProblemRepository _problemRepository;
         private ISolutionRepository _solutionRepository;
 
+        private int _pageSize = 10;
+
         public ProblemController(IProblemRepository problemRepository, ISolutionRepository solutionRepository)
         {
             _problemRepository = problemRepository;
             _solutionRepository = solutionRepository;
         }
 
-        public IActionResult Index() => View(_problemRepository.Problems as IQueryable);
+        public IActionResult Index() => View(_problemRepository.Problems.ToArray());
 
         public IActionResult AddProblem(Problem problem)
         {

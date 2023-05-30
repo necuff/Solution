@@ -8,7 +8,10 @@ namespace Solution_1.Models
     {
         private DataContext _dataContext;
 
-        public ProblemRepository(DataContext dataContext) => _dataContext = dataContext;
+        public ProblemRepository(DataContext dataContext)
+        {
+            _dataContext = dataContext;            
+        }
 
         public IEnumerable<Problem> Problems => 
             _dataContext.Problems.Include(p => p.Solution);

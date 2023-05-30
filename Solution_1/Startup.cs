@@ -23,17 +23,19 @@ namespace Solution_1
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddDbContext<DataContext>(options =>
+            services.AddDbContext<DataContext>(options =>                
                 options.UseSqlServer(
                     Configuration["ConnectionStrings:DefaultConnection"]));            
             services.AddMvc(opts => opts.EnableEndpointRouting = false);
             services.AddTransient<IProblemRepository, ProblemRepository>();
-            services.AddTransient<ISolutionRepository, SolutionRepository>();
+            services.AddTransient<ISolutionRepository, SolutionRepository>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            SeedData.InitMigrate(app);
+
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             app.UseStatusCodePages();
@@ -42,6 +44,7 @@ namespace Solution_1
                     name: "default",
                     template: "{controller=Problem}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

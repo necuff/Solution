@@ -10,7 +10,7 @@ namespace Solution_1.Controllers
 
         public SolutionController(ISolutionRepository solutionRepository) => _solutionRepository = solutionRepository;
 
-        public IActionResult Index() => View(_solutionRepository.Solutions as IQueryable);
+        public IActionResult Index() => View(_solutionRepository.Solutions.ToArray());
 
         [HttpPost]
         public IActionResult AddSolution(Solution solution)
