@@ -1,8 +1,12 @@
-﻿@model IEnumerable<Solution>
+﻿@model SolutionsListViewModel
 
 <h3 class="p-2 bg-primary text-white text-center">Solutions</h3>    
 
 <div class="container-fluid mt-3">
+    <div page-model="@Model.PagingInfo" page-action="Index"
+         page-classes-enabled=true page-class="btn"
+         page-class-normal="btn-outline-primary" page-class-selected="btn-primary"></div>
+
     <div class="row">
         <div class="col fw-bold">Id</div>
         <div class="col fw-bold">Name</div>
@@ -14,7 +18,7 @@
             @Html.Partial("SolutionEditor", new Solution())
         </form>
     }
-    @foreach(Solution s in Model)
+    @foreach(Solution s in Model.Solutions)
     {
         @if (s.Id == ViewBag.EditId)
         {
