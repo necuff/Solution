@@ -1,0 +1,41 @@
+﻿@model IQueryable<Solution>
+
+<h3 class="p-2 bg-primary text-white text-center">Solutions</h3>    
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col fw-bold">Id</div>
+        <div class="col fw-bold">Name</div>
+        <div class="col"></div>
+    </div>
+    @if (ViewBag.EditId == null)
+    {
+        <form asp-action="AddSolution">
+            @Html.Partial("SolutionEditor", new Solution())
+        </form>
+    }
+    @foreach(Solution s in Model)
+    {
+        @if (s.Id == ViewBag.EditId)
+        {
+            <form asp-action="UpdateSolution" method="post">
+                <input type="hidden" name="Id" value="@s.Id" />
+                @Html.Partial("SolutionEditor", s)
+            </form>
+        } else
+        {
+            <div class="row p-2">
+                <div class="col-1">@s.Id</div>
+                <div class="col">@s.Name</div>
+                <div class="col">
+                    <form asp-action="DeleteSolution" method="post">
+                        <input type="hidden" name="Id" value="@s.Id" />
+                        <a asp-action="EditSolution" asp-route-id="@s.Id"
+                           class="btn btn-outline-primary">Edit</a>                        
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</div>

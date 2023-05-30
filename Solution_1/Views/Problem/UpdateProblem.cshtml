@@ -1,0 +1,44 @@
+﻿@model Problem
+
+<h3 class="p-2 bg-primary text-white text-center">Update Problem</h3>
+
+<form asp-action="UpdateProblem" method="post">
+    <div class="mb-3">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" readonly/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Solution"></label>
+        <select class="form-control" asp-for="SolutionId">
+            @if(Model.Id == 0)
+            {
+                <option disabled selected>Choose solution</option>                
+            }
+            @foreach (Solution s in ViewBag.Solutions)
+            {
+                <option selected=@(Model.Solution?.Id == s.Id) value="@s.Id">@s.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="FinishDate"></label>
+        <input asp-for="FinishDate" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
