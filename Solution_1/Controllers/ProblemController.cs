@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Solution_1.Models;
+using Solution_1.Models.ViewModels;
 using System.Linq;
 
 namespace Solution_1.Controllers
@@ -17,7 +18,22 @@ namespace Solution_1.Controllers
             _solutionRepository = solutionRepository;
         }
 
-        public IActionResult Index() => View(_problemRepository.Problems.ToArray());
+        public IActionResult Index(int pageNum = 1) 
+            => View(new ProblemsListViewModel
+            {
+                Problems = _problemRepository.Problems
+                .OrderBy(p => p.Id)
+                .Skip((pageNum - 1) * _pageSize)
+                .Take(_pageSize)
+                .ToArray(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = _pageSize,
+                    TotalItems = _problemRepository.Problems.Count()
+                }
+            });
+
 
         public IActionResult AddProblem(Problem problem)
         {
