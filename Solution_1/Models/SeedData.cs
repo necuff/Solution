@@ -42,18 +42,18 @@ namespace Solution_1.Models
             if (!dataContext.Problems.Any())
             {
                 dataContext.Problems.AddRange(
-                    new Problem { Name = "Problem 1", Description = "Description" , SolutionId = 1},
-                    new Problem { Name = "Problem 2", Description = "Description" , SolutionId = 1},
-                    new Problem { Name = "Problem 3", Description = "Description" , SolutionId = 1},
-                    new Problem { Name = "Problem 4", Description = "Description" , SolutionId = 2},
-                    new Problem { Name = "Problem 5", Description = "Description", SolutionId = 2 },
-                    new Problem { Name = "Problem 6", Description = "Description", SolutionId = 2 },
-                    new Problem { Name = "Problem 7", Description = "Description", SolutionId = 2 },
-                    new Problem { Name = "Problem 8", Description = "Description", SolutionId = 1 },
-                    new Problem { Name = "Problem 9", Description = "Description", SolutionId = 3 },
-                    new Problem { Name = "Problem 10", Description = "Description", SolutionId = 4 },
-                    new Problem { Name = "Problem 11", Description = "Description", SolutionId = 5 },
-                    new Problem { Name = "Problem 12", Description = "Description", SolutionId = 1 }
+                    new Problem { Name = "Problem 1", Description = "Description" , SolutionId = 1, Email = "aaa@bbb.cc"},
+                    new Problem { Name = "Problem 2", Description = "Description" , SolutionId = 1, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 3", Description = "Description" , SolutionId = 1, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 4", Description = "Description" , SolutionId = 2, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 5", Description = "Description", SolutionId = 2, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 6", Description = "Description", SolutionId = 2, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 7", Description = "Description", SolutionId = 2, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 8", Description = "Description", SolutionId = 1, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 9", Description = "Description", SolutionId = 3, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 10", Description = "Description", SolutionId = 4, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 11", Description = "Description", SolutionId = 5, Email = "aaa@bbb.cc" },
+                    new Problem { Name = "Problem 12", Description = "Description", SolutionId = 1, Email = "aaa@bbb.cc" }
                     );
                 dataContext.SaveChanges();
             }
