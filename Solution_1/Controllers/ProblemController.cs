@@ -38,6 +38,10 @@ namespace Solution_1.Controllers
 
         public IActionResult AddProblem(Problem problem)
         {
+            if (!ModelState.IsValid)
+            {                
+                return View(problem);
+            }
             _problemRepository.AddProblem(problem);
             return RedirectToAction(nameof(Index));
         }        
@@ -51,6 +55,11 @@ namespace Solution_1.Controllers
         [HttpPost]
         public IActionResult UpdateProblem(Problem problem)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Solutions = _solutionRepository.Solutions;
+                return View(problem);
+            }
             if(problem.Id == 0)
             {
                 _problemRepository.AddProblem(problem);

@@ -3,6 +3,7 @@
 <h3 class="p-2 bg-primary text-white text-center">Update Problem</h3>
 
 <form asp-action="UpdateProblem" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="mb-3">
         <label asp-for="Id"></label>
         <input asp-for="Id" class="form-control" readonly/>
