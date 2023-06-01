@@ -9,22 +9,22 @@ namespace Solution_1.Controllers
     {
         private ISolutionRepository _solutionRepository;
 
-        private int _pageSize = 10;
+        public int PageSize { get; set; } = 10;
 
         public SolutionController(ISolutionRepository solutionRepository) => _solutionRepository = solutionRepository;
 
-        public IActionResult Index(int pageNum = 1)
+        public ViewResult Index(int pageNum = 1)
             => View(new SolutionsListViewModel
             {
                 Solutions = _solutionRepository.Solutions
                 .OrderBy(p => p.Id)
-                .Skip((pageNum - 1) * _pageSize)
-                .Take(_pageSize)
+                .Skip((pageNum - 1) * PageSize)
+                .Take(PageSize)
                 .ToList(),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageNum,
-                    ItemsPerPage = _pageSize,
+                    ItemsPerPage = PageSize,
                     TotalItems = _solutionRepository.Solutions.Count()
                 }
             });

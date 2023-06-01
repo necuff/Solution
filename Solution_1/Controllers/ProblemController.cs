@@ -11,7 +11,7 @@ namespace Solution_1.Controllers
         private IProblemRepository _problemRepository;
         private ISolutionRepository _solutionRepository;
 
-        private int _pageSize = 10;
+        public int PageSize { get; set; } = 10;
 
         public ProblemController(IProblemRepository problemRepository, ISolutionRepository solutionRepository)
         {
@@ -24,13 +24,13 @@ namespace Solution_1.Controllers
             {
                 Problems = _problemRepository.Problems
                 .OrderBy(p => p.Id)
-                .Skip((pageNum - 1) * _pageSize)
-                .Take(_pageSize)
+                .Skip((pageNum - 1) * PageSize)
+                .Take(PageSize)
                 .ToList(),                
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageNum,
-                    ItemsPerPage = _pageSize,
+                    ItemsPerPage = PageSize,
                     TotalItems = _problemRepository.Problems.Count()
                 }
             });
