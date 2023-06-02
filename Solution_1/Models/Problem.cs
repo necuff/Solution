@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solution_1.Models
 {
@@ -18,8 +19,10 @@ namespace Solution_1.Models
         [Required(ErrorMessage = "Please enter Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
+
+        [Range(1, long.MaxValue, ErrorMessage = "Please enter a Solution")]
+        public long SolutionId { get; set; }
         
-        public long SolutionId { get; set; }        
         public Solution Solution { get; set; }
     }
 }

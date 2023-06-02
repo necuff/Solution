@@ -17,7 +17,7 @@
         <select class="form-control" asp-for="SolutionId">
             @if(Model.Id == 0)
             {
-                <option disabled selected>Choose solution</option>                
+                <option disabled selected value="0">Choose solution</option>                
             }
             @foreach (Solution s in ViewBag.Solutions)
             {
