@@ -20,7 +20,7 @@ namespace Solution_1.Models
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
 
-        [Range(1, long.MaxValue, ErrorMessage = "Please enter a Solution")]
+        [Range(1, long.MaxValue, ErrorMessage = "Please select a Solution")]
         public long SolutionId { get; set; }
         
         public Solution Solution { get; set; }
