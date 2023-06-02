@@ -6,6 +6,10 @@ namespace Solution_1.Models
 {
     public class Problem
     {
+        public Problem() { 
+            FinishDate = DateTime.Now;
+        }        
+
         public long Id { get; set; }
         [Required(ErrorMessage = "Please enter a Name of problem")]
         public string Name { get; set; }
